@@ -12,7 +12,6 @@ boolean statusStart = false;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-//  Serial.println(F("DHT11 test!"));
   pinMode(pinButton, INPUT);
   pinMode(pinLEDR, OUTPUT);
   pinMode(pinLEDY, OUTPUT);
@@ -24,7 +23,6 @@ void loop() {
   // put your main code here, to run repeatedly:
   delay(200);
   buttonState = digitalRead(pinButton);
-//  Serial.println(statusStart); //Checking the Start status
   float temperature = dht.readTemperature();
   if (isnan(temperature)) {
     Serial.println(F("Failed to read from DHT sensor!"));
@@ -35,18 +33,18 @@ void loop() {
   }
   if(statusStart==1){
     if(temperature<35) {
-        digitalWrite(pinLEDR, LOW);
-        digitalWrite(pinLEDY, LOW);
-        digitalWrite(pinLEDG, HIGH);
-      } else if (temperature>=35 && temperature<=50) {
-        digitalWrite(pinLEDR, LOW);
-        digitalWrite(pinLEDY, HIGH);
-        digitalWrite(pinLEDG, HIGH);
-      } else if (temperature>50) {
-        digitalWrite(pinLEDR, HIGH);
-        digitalWrite(pinLEDY, HIGH);
-        digitalWrite(pinLEDG, HIGH);
-      }
+      digitalWrite(pinLEDR, LOW);
+      digitalWrite(pinLEDY, LOW);
+      digitalWrite(pinLEDG, HIGH);
+    } else if (temperature>=35 && temperature<=50) {
+      digitalWrite(pinLEDR, LOW);
+      digitalWrite(pinLEDY, HIGH);
+      digitalWrite(pinLEDG, HIGH);
+    } else if (temperature>50) {
+      digitalWrite(pinLEDR, HIGH);
+      digitalWrite(pinLEDY, HIGH);
+      digitalWrite(pinLEDG, HIGH);
+    }
     Serial.print(temperature);
     Serial.println(F("°C "));
   } else {
