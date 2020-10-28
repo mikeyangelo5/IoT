@@ -26,17 +26,17 @@ void loop() {
   if(ElapsedTime > IntervalTime){
     SavedTime = TimeNow;
   }
-  if(ElapsedTime < 4000){
+  if(ElapsedTime < 4000) {
     RState = HIGH;
     YState = LOW;
     GState = LOW;
   }
-  if(ElapsedTime > 4000 && ElapsedTime < 8000){
+  if(ElapsedTime > 4000 && ElapsedTime < 8000) {
     RState = LOW;
     YState = LOW;
     GState = HIGH;
   }
-  if(ElapsedTime > 8000){
+  if(ElapsedTime > 8000) {
     RState = LOW;
     YState = HIGH;
     GState = LOW;
